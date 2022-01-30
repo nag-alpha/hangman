@@ -1,10 +1,11 @@
 #include <iostream>
-#include <cstring>
+#include <string.h>
 
 using namespace std;
 
 string original="TUMBBAD";
 char dashes[100];
+char to_check[100];
 int size = original.length();
 int tries = 6;
 char guess;
@@ -116,17 +117,26 @@ void game_start(){
         cout<<endl;
         draw();
         cout<<endl;
-        cout<<"You have "<<tries<<" tries"<<endl;
-        cout<<endl;
-        draw_dashes();
-        cout<<endl;
-        cout<<"\nGuess the letter (type it in upper case) : ";
-        cin>>guess;
-        right_or_wrong();
-        cout<<endl;
+        if(strcmp(dashes, to_check)==0){
+            cout<<"You guessed it right :)"<<endl;
+            cout<<"The correct answer is : "<<original<<endl;
+            exit(0);
+        }
+        else{
+            cout<<endl;
+            cout<<"You have "<<tries<<" tries"<<endl;
+            cout<<endl;
+            draw_dashes();
+            cout<<endl;
+            cout<<"\nGuess the letter (type it in upper case) : ";
+            cin>>guess;
+            right_or_wrong();
+            cout<<endl;
+        }
     }
     if(tries==0){
         draw();
+        cout<<endl;
         cout<<"You have "<<tries<<" tries"<<endl;
         cout<<"Sorry. You lost the game"<<endl;
         cout<<"The correct answer was : "<<original<<endl;
@@ -142,6 +152,10 @@ int main()
         else{
             dashes[i] = '_';
         }
+    }
+
+    for(int i=0; i<size; i++){
+        to_check[i] = original[i];
     }
 
     cout <<"Welcome to Hangman !!!" << endl;
