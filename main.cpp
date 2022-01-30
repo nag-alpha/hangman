@@ -3,10 +3,10 @@
 
 using namespace std;
 
-string original="TUMBBAD";
+string original;
 char dashes[100];
 char to_check[100];
-int size = original.length();
+int size;
 int tries = 6;
 char guess;
 
@@ -112,8 +112,8 @@ void draw_dashes(){
 
 
 void game_start(){
-    cout<<endl;
     while(tries>0){
+        cout<<"Start guessing"<<endl;
         cout<<endl;
         draw();
         cout<<endl;
@@ -130,6 +130,7 @@ void game_start(){
             cout<<endl;
             cout<<"\nGuess the letter (type it in upper case) : ";
             cin>>guess;
+            system("cls");
             right_or_wrong();
             cout<<endl;
         }
@@ -146,6 +147,14 @@ void game_start(){
 
 int main()
 {
+    cout <<"Welcome to Hangman !!!" << endl;
+
+    cout<<"Give the players a word to guess :)"<<endl;
+    cout<<"Enter the word in capital letters only : ";
+    getline(cin, original);
+    size = original.length();
+    system("cls");
+
     for(int i=0; i<size; i++){
         if(original[i] == ' ')
             dashes[i] = ' ';
@@ -157,19 +166,9 @@ int main()
     for(int i=0; i<size; i++){
         to_check[i] = original[i];
     }
-
-    cout <<"Welcome to Hangman !!!" << endl;
-    cout<<"Start guessing :)";
     game_start();
     return 0;
 }
-
-
-
-
-
-
-//to check and return success if correct answer is guesses.
 
 
 
