@@ -128,7 +128,7 @@ void game_start(){
             cout<<endl;
             draw_dashes();
             cout<<endl;
-            cout<<"\nGuess the letter (type it in upper case) : ";
+            cout<<"\nGuess the letter (type it in lower case) : ";
             cin>>guess;
             system("cls");
             right_or_wrong();
@@ -150,7 +150,7 @@ int main()
     cout <<"Welcome to Hangman !!!" << endl;
 
     cout<<"Give the players a word to guess :)"<<endl;
-    cout<<"Enter the word in capital letters only : ";
+    cout<<"Enter the word using lower case letters only : ";
     getline(cin, original);
     size = original.length();
     system("cls");
